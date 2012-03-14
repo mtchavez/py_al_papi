@@ -1,0 +1,5 @@
+*.pyc
+/dist
+/docs/_build
+/tags
+MANIFEST*
