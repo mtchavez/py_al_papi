@@ -14,19 +14,20 @@ from nose.tools import assert_raises
 from nose.tools import raises
 from random import randint
 
+Config("my-api-key")
 
 class TestHelper(object):
 
-    @staticmethod
-    def includes(collection, expected):
-        for item in collection.items:
-            if item.id == expected.id:
-                return True
-        return False
+  @staticmethod
+  def includes(collection, expected):
+    for item in collection.items:
+      if item.id == expected.id:
+        return True
+    return False
 
-    @staticmethod
-    def in_list(collection, expected):
-        for item in collection:
-            if item == expected:
-                return True
-        return False
+  @staticmethod
+  def in_list(collection, expected):
+    for item in collection:
+      if item == expected:
+        return True
+    return False
