@@ -14,6 +14,10 @@ namespace :test do
   end
 end
 
+task :build do
+  sh "python setup.py build && python setup.py install"
+end
+
 task :clean do
   rm_rf "build"
   rm_rf "dist"
