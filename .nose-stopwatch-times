@@ -1,0 +1,17 @@
+(dp1
+S'(test_config.TestConfig)'
+p2
+F7.2956085205078125e-05
+sS'AttributeError'
+p3
+F0.00031185150146484375
+sS'(test_locales.TestLocales)'
+p4
+F7.4148178100585938e-05
+sS'(test_engines.TestEngines)'
+p5
+F0.00022602081298828125
+sS'(test_request.TestRequest)'
+p6
+F9.3936920166015625e-05
+s.

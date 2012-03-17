@@ -10,6 +10,6 @@ setup(
     packages=["al_papi"],
     package_data={},
     install_requires=[],
-    tests_require=["nose"],
+    tests_require=["nose", "pinocchio=0.3"],
     zip_safe=False
 )

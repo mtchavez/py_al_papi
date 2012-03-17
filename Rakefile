@@ -5,12 +5,12 @@ task :test => ["test:unit", "test:integration"]
 namespace :test do
   desc "run unit tests"
   task :unit do
-    sh "nosetests tests/unit"
+    sh "nosetests --with-spec --spec-color tests/unit"
   end
 
   desc "run integration tests"
   task :integration do
-    sh "nosetests tests/integration"
+    sh "nosetests tests/integration" if false
   end
 end
 
