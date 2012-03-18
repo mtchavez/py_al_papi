@@ -4,16 +4,15 @@ class Locales(object):
   """
     Locales class is used as a helper class to find out the supported locales
     for the search engine you are passing to the API::
-
+    
         al_papi.Locales.supported(<engine>)
-
+    
     By default engine is google. The supported engines are currently google, yahoo and bing. You can
     optionally call direct engine methods to return the supported locales::
     
       al_papi.Locales.google()
       al_papi.Locales.yahoo()
       al_papi.Locales.bing()
-    
   """
   
   @staticmethod

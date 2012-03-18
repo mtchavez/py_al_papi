@@ -5,4 +5,3 @@ from locales       import Locales
 from request       import Request
 from request_error import RequestError
 from response      import Response
-from version       import Version

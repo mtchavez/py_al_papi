@@ -7,7 +7,8 @@ import simplejson as json
 
 class AlHttp(object):
   """
-    docstring for ClassName
+    AlHttp is used by the Request class to make the raw HTTP requests to the API.
+    Please use the Request class to make post, priority_post and get calls to the API.
   """
   
   post_path     = "/keywords.json"
@@ -17,6 +18,7 @@ class AlHttp(object):
   def __init__(self):
     self.success    = False
     self.over_limit = False
+    self.suspended  = False
     self.errors     = []
     self.code       = None
     self.body       = None
@@ -60,6 +62,7 @@ class AlHttp(object):
       req.errors.append(al_papi.RequestError('Invalid Auth Token Provided', status))
     elif status == "403":
       if re.search("Account Suspended", content, re.I):
+        req.suspended
         req.errors.append(al_papi.RequestError('Account Suspended', status))
       elif re.search("Request Limit Exceeded", content, re.I):
         req.over_limit = True

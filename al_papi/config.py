@@ -2,7 +2,11 @@ import al_papi
 
 class Config(object):
   """
-    Config class for storing credentials for request.
+    Config class is used to set your api key before making any API requests.::
+    
+      al_papi.Config.setup("your-api-key")
+    
+    Once your api key is set up you can make requests to the API.
   """
   default_host = "http://api.authoritylabs.com"
   port         = 80
