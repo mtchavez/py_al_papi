@@ -4,16 +4,16 @@ class Request(object):
   """
     docstring for Request
   """
+  
   @staticmethod
-  def default_headers():
-    return { 'Content-type': 'application/json' }
+  def post(params = {}, priority = False):
+    return al_papi.AlHttp.post(params, priority)
   
-  def __init__(self):
-    self.success = None
-    self.errors  = []
+  @staticmethod
+  def priority_post(params = {}, priority = False):
+    return al_papi.AlHttp.priority_post(params)
   
-  def post(self, params = {}):
-    al_papi.AlHttp.post(params)
+  @staticmethod
+  def get(params = {}):
+    return al_papi.AlHttp.get(params)
   
-  def get(self, params = {}):
-    al_papi.AlHttp.post(params)
