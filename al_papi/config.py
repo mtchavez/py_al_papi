@@ -6,6 +6,7 @@ class Config(object):
   """
   default_host = "http://api.authoritylabs.com"
   port         = 80
+  api_key      = ""
 
   @staticmethod
   def setup(api_key):
