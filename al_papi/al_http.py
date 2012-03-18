@@ -2,6 +2,8 @@ import al_papi
 
 from httplib2 import Http
 from urllib import urlencode
+import re
+import simplejson as json
 
 class AlHttp(object):
   """
@@ -12,22 +14,62 @@ class AlHttp(object):
   get_path      = "/keywords/get.json"
   priority_path = "/keywords/priority.json"
   
+  def __init__(self):
+    self.success    = False
+    self.over_limit = False
+    self.errors     = []
+    self.code       = None
+    self.body       = None
+  
+  @staticmethod
+  def default_headers():
+    return { 'Content-type': 'application/json' }
+  
   @staticmethod
   def post(params = {}, priority = False):
     path = al_papi.AlHttp.post_path if priority == False else al_papi.AlHttp.priority_path
-    al_papi.AlHttp.request("POST", params, path)
+    return al_papi.AlHttp.request("POST", params, path)
   
+  @staticmethod
   def priority_post(params = {}):
-    al_papi.AlHttp.request("POST", params, al_papi.AlHttp.priority_path)
+    return al_papi.AlHttp.request("POST", params, al_papi.AlHttp.priority_path)
+  
+  @staticmethod
+  def get(params = {}):
+    return al_papi.AlHttp.request("GET", params, al_papi.AlHttp.get_path)
   
   @staticmethod
   def request(verb, params, path):
+    req  = AlHttp()
     http = Http()
+    
     params.update( { "auth_token" : al_papi.Config.api_key } )
     url = '%s%s?%s' % ( al_papi.Config.default_host, path, urlencode(params) )
-    resp, content = http.request(url, verb, headers=al_papi.Request.default_headers())
-    print "RESPONSE"
-    print resp
-    print "CONTENT"
-    print content
+    resp, content = http.request(url, verb, headers=al_papi.AlHttp.default_headers())
     
+    status   = resp["status"]
+    req.code = status
+    req.body = content
+    
+    if status == "200":
+      req.success = True
+      req.body = json.loads(content)
+    elif status == "204":
+      req.errors.append(al_papi.RequestError('No Content', status))
+    elif status == "401":
+      req.errors.append(al_papi.RequestError('Invalid Auth Token Provided', status))
+    elif status == "403":
+      if re.search("Account Suspended", content, re.I):
+        req.errors.append(al_papi.RequestError('Account Suspended', status))
+      elif re.search("Request Limit Exceeded", content, re.I):
+        req.over_limit = True
+        req.errors.append(al_papi.RequestError('Request Limit Exceeded', status))
+    else:
+      try:
+        req.body = json.loads(content)
+      except:
+        req.body = content
+      
+      req.errors.append(al_papi.RequestError(req.body, status))
+    
+    return al_papi.Response(req, path, params)
