@@ -4,6 +4,7 @@ Python Package for AuthorityLabs Partner API
 A wrapper around the Partner API calls. Allows post, priority post and get calls.
 
 * Github: http://github.com/mtchavez/py_al_papi
+* PyPi: http://pypi.python.org/pypi/al_papi
 
 ## Install
 
