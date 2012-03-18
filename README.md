@@ -8,7 +8,7 @@ A wrapper around the Partner API calls. Allows post, priority post and get calls
 
 ## Install
 
-    pip install py_al_papi
+    pip install al_papi
 
 ## Usage
 
