@@ -16,7 +16,7 @@ Configure your api key to be used to make requests:
 
     import al_papi
 
-    al_papi.Config('yR43BtRDjadfavXy6a4aK3')
+    al_papi.Config.setup('yR43BtRDjadfavXy6a4aK3')
 
 ### POST
 
@@ -24,7 +24,7 @@ Post your keyword-engine-locale combination to the API once you have set your AP
 
     import al_papi
 
-    al_papi.Config('yR43BtRDjadfavXy6a4aK3')
+    al_papi.Config.setup('yR43BtRDjadfavXy6a4aK3')
 
     res = al_papi.Request.post({ "keyword" : "Centaur Stampede", "engine" : "bing", "locale" : "en-us" })
 
@@ -39,7 +39,7 @@ Post your keyword to the priority queue if you need results in a more timely man
 
     import al_papi
 
-    al_papi.Config('yR43BtRDjadfavXy6a4aK3')
+    al_papi.Config.setup('yR43BtRDjadfavXy6a4aK3')
 
     res = al_papi.Request.priority_post({ "keyword" : "Druggie Scientist", "engine" : "bing", "locale" : "en-us" })
 
@@ -54,7 +54,7 @@ When you are ready to get your results you can do a GET request for your keyword
 
     import al_papi
 
-    al_papi.Config('yR43BtRDjadfavXy6a4aK3')
+    al_papi.Config.setup('yR43BtRDjadfavXy6a4aK3')
 
     res = al_papi.Request.priority_post({ "keyword" : "Canadian Wizards", "engine" : "bing", "locale" : "en-us" })
 
@@ -70,7 +70,7 @@ When making an API request a response object is returned with any errors, http r
 
     import al_papi
 
-    al_papi.Config('yR43BtRDjadfavXy6a4aK3')
+    al_papi.Config.setup('yR43BtRDjadfavXy6a4aK3')
 
     res = al_papi.Request.priority_post({ "keyword" : "Canadian Wizards", "engine" : "bing", "locale" : "en-us" })
 
@@ -78,7 +78,7 @@ When making an API request a response object is returned with any errors, http r
     # Returns an array of error objects.
     res.errors
 
-    for err in res.errors
+    for err in res.errors:
       print err.message
       print err.code
 

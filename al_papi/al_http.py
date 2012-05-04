@@ -46,6 +46,9 @@ class AlHttp(object):
     http = Http()
     
     params.update( { "auth_token" : al_papi.Config.api_key } )
+    keyword = params.get("keyword", "")
+    keyword = unicode(keyword, 'utf-8')
+    params.update( { "keyword" : keyword.encode('utf-8') })
     url = '%s%s?%s' % ( al_papi.Config.default_host, path, urlencode(params) )
     resp, content = http.request(url, verb, headers=al_papi.AlHttp.default_headers())
     
