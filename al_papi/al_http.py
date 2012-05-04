@@ -55,6 +55,7 @@ class AlHttp(object):
     status   = resp["status"]
     req.code = status
     req.body = content
+    content = unicode(content, "ISO-8859-1")
     
     if status == "200":
       req.success = True
