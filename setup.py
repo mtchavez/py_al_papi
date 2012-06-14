@@ -2,7 +2,7 @@ import al_papi
 from distutils.core import setup
 setup(
     name="al_papi",
-    version="0.0.5",
+    version="0.0.6",
     description="AuthorityLabs Partner API Wrapper",
     author="Chavez",
     author_email="support@authoritylabs.com",
