@@ -5,6 +5,7 @@ A wrapper around the Partner API calls. Allows post, priority post and get calls
 
 * Github: http://github.com/mtchavez/py_al_papi
 * PyPi: http://pypi.python.org/pypi/al_papi
+* [![endorse](http://api.coderwall.com/mtchavez/endorsecount.png)](http://coderwall.com/mtchavez)
 
 ## Install
 
